@@ -16,6 +16,7 @@ nodeGroups:
   - name: eks-node-group-spot-instances
     desiredCapacity: 3
     privateNetworking: true
+    amiFamily: Bottlerocket
     instancesDistribution:
       instanceTypes: ["t3.medium", "t3a.medium"]
       onDemandPercentageAboveBaseCapacity: 0
