@@ -18,9 +18,11 @@ This solution demonstrate how you can create multiple environments on an app Wit
 
 ![architecture](img/diagram.png)
 
-## Guide
+## Prerequisite Guide
 
 ### 1. Create EKS Cluster
+
+Please, follow this guide to ensure you have everything set as the baseline to use the solution.
 
 > If you already have a Kubernetes cluster with version v1.18 or greater, please make sure the subnets where you want to publish the load balancer are tagged accordingly as the documentation explains https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.2/deploy/subnet_discovery/. Also, configure the [OIDC provider](https://docs.aws.amazon.com/eks/latest/userguide/enable-iam-roles-for-service-accounts.html)
 
@@ -56,3 +58,14 @@ In the `/aws-load-balancer-controller` folder you'll find two files:
 > For the lab, please use the `run.sh` file to create and install everything required.
 
 To verify it is running, please check the **ext-dns** pod in the **default** namespace with the command `kubectl get pods --namespace kube-system | grep aws-load-balancer-controller`.
+
+
+## Start creating environments!
+
+Now that you have everything ready, let's get the hands dirty!
+
+Please, follow the example that is under the `/helm` folder. This sample app an nginx site without any custom configuration running on a Docker container and managed by a **Deployment** object (`/helm/templates/deployment.yaml`). There's a **Service** in front of it (`/helm/templates/service.yaml`) and the **Ingress** (`/helm/templates/ingress.yaml`) with all the annotations required for it to be processed by the _AWS Load Balancer Controller_. 
+
+There's also a `run.sh` which recieves the "name" of the environment as parameter and creates a **Namespace** with that name, plus adds it as suffix to the subdomain of the app, for example **app-dev.mariomerco.com**, where the "name" and the **Namespace** is **dev**.
+
+> **Important Note**: Please change the `baseDomain` with your own DNS domain.
