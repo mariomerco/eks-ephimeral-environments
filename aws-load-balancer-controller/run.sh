@@ -1,3 +1,5 @@
+ACCOUNT_ID=`aws sts get-caller-identity --query "Account" --output text`
+
 aws cloudformation deploy \
     --stack-name aws-load-balancer-controller-iam-policy \
     --template-file iam.json \
@@ -8,7 +10,7 @@ eksctl create iamserviceaccount \
     --name aws-load-balancer-controller \
     --cluster my-eks-cluster \
     --namespace kube-system \
-    --attach-policy-arn arn:aws:iam::750796802028:policy/AWSLoadBalancerControllerPolicy \
+    --attach-policy-arn arn:aws:iam::${ACCOUNT_ID}:policy/AWSLoadBalancerControllerPolicy \
     --override-existing-serviceaccounts \
     --approve
 
