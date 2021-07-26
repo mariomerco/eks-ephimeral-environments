@@ -13,7 +13,7 @@ metadata:
     app: nginx
 spec:
   rules:
-    - host: app-{{ .Release.Namespace }}.mariomerco.com
+    - host: app-{{ .Release.Namespace }}.{{ .Values.baseDomain }}
       http:
         paths:
           - path: /*
