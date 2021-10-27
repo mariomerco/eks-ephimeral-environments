@@ -1,0 +1,31 @@
+{
+    "AWSTemplateFormatVersion": "2010-09-09",
+        "Description": "Services API - IAM Policy",
+        "Resources": {
+            "IamPolicy": {
+                "Type": "AWS::IAM::ManagedPolicy",
+                "Properties": {
+                    "PolicyDocument" : {
+                        "Version": "2012-10-17",
+                        "Statement": [
+                            {
+                                "Effect": "Allow",
+                                "Action": [
+                                    "dynamodb:BatchGetItem",
+                                    "dynamodb:PutItem",
+                                    "dynamodb:DescribeTable",
+                                    "dynamodb:DeleteItem",
+                                    "dynamodb:GetItem",
+                                    "dynamodb:Scan",
+                                    "dynamodb:Query",
+                                    "dynamodb:UpdateItem"
+                                ],
+                                "Resource": "*"
+                            }
+                        ]
+                    },
+                    "ManagedPolicyName" : "ServicesIAMPolicy"
+                }
+            }
+        }
+    }

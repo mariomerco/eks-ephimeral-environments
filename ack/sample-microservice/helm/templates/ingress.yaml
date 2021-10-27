@@ -1,7 +1,7 @@
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
-  name: services-ingress
+  name: environments-ingress
   namespace: {{ .Release.Namespace }}
   annotations:
     kubernetes.io/ingress.class: alb
@@ -10,13 +10,14 @@ metadata:
     alb.ingress.kubernetes.io/ssl-redirect: '443'
     alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}, {"HTTPS": 443}]'
   labels:
-    app: nginx
+    app: {{ template "services-api.name" . }}
+    release: {{ .Release.Name }}
 spec:
   rules:
-    - host: app-{{ .Release.Namespace }}.{{ .Values.baseDomain }}
+    - host: services-api-{{ .Release.Namespace }}.{{ .Values.baseDomain }}
       http:
         paths:
           - path: /*
             backend:
-              serviceName: nginx-service
-              servicePort: 80
+              serviceName: {{ template "services-api.name" . }}
+              servicePort: {{ .Values.service.port }}

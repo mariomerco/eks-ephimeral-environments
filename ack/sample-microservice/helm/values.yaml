@@ -1,0 +1,33 @@
+baseDomain: mariomerco.com
+
+replicaCount: 1
+
+image:
+  repository: mariomerco/services-api
+  tag: latest
+  pullPolicy: Always
+
+service:
+  type: NodePort
+  port: 5050   
+  name: services-api
+
+serviceAccount:
+  name: services-api
+
+aws:
+  region: us-east-2
+
+resources: {}
+  # limits:
+  #  cpu: 100m
+  #  memory: 128Mi
+  # requests:
+  #  cpu: 100m
+  #  memory: 128Mi
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
