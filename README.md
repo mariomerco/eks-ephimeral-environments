@@ -102,7 +102,7 @@ After it finishes, you'll be able to do two things
 ```
 {
 	"ServiceName": "EKS",
-	"ServiceGroup": "2020",
+	"ServiceGroup": "Containers",
 	"HasFreeTier": false
 }
 ```
