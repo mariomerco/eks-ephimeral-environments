@@ -1,0 +1,16 @@
+apiVersion: dynamodb.services.k8s.aws/v1alpha1
+kind: Table
+metadata:
+  name: {{ .Release.Namespace }}-services
+  namespace: {{ .Release.Namespace }}
+spec:
+  tableName: {{ .Release.Namespace }}-services
+  attributeDefinitions:
+    - attributeName: _id
+      attributeType: S
+  keySchema:
+    - attributeName: _id
+      keyType: HASH
+  provisionedThroughput:
+    readCapacityUnits: 5
+    writeCapacityUnits: 5

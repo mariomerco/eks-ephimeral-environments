@@ -6,6 +6,9 @@ This solution demonstrate how you can create multiple environments on an app Wit
 - An AWS Account and access to it with enough required permissions _(EKS, VPC, EC2, IAM, Route53, ACM)_
 - A public hosted zone on Route53 managing a valid subdomain
 - A valid SSL Certificate registered in [ACM](https://aws.amazon.com/certificate-manager/) (can be the public one which is free). This one should wrap the wildcard `*.{your-domain-in-here}` (for example: `*.mariomerco.com`).
+- Make sure you change the `AWS_REGION` variables in this repository to where you want to deploy the stack. The variable is present in these files:
+    - cluster.yaml
+    - ack-dynamodb/run.sh
 
 ## Tools used
 - [kubectl](https://kubernetes.io/docs/tasks/tools/)
