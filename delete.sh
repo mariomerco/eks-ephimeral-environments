@@ -14,7 +14,8 @@ eksctl delete iamserviceaccount --name ack-dynamodb-controller --namespace ack-s
 sleep 5
 
 eksctl get iamserviceaccount --cluster my-eks-cluster
-echo "If all IAM Roles for Service Accounts are deleted, please press [ENTER], if not [CTRL+C] and do so"
+echo "If all IAM Roles for Service Accounts for the 'services-api' and 'sample-app' are deleted, please press [ENTER], if not [CTRL+C] and do so"
+echo "Example of how to delete one: eksctl delete iamserviceaccount --name services-api --namespace develop --cluster my-eks-cluster"
 read
 
 eksctl delete cluster --name my-eks-cluster
