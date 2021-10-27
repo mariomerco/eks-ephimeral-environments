@@ -1,0 +1,2 @@
+Great!!! Give it some minutes (DNS replication, Load Balancer creation, and so on), and then access: 
+https://app-{{ .Release.Namespace }}.{{ .Values.baseDomain }}

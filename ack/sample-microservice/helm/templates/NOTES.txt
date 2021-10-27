@@ -1,0 +1,4 @@
+Great!!! Give it some minutes (DNS replication, Load Balancer creation, and so on), and then the API will be here: 
+https://services-api-{{ .Release.Namespace }}.{{ .Values.baseDomain }}
+
+Documentation of the API can be found here: 

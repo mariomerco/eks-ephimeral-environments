@@ -97,7 +97,7 @@ After it finishes, you'll be able to do two things
 1. To verify that the DynamoDB table was created on your account and region you've been using. The name of the table is `${Environment}-services`, where `${Environment}` is the argument you use when creating the stack, in our case `develop`.
 
 2. To hit your microservice with the following HTTP endpoints:
-
+#### Services API Documentation
 - **_/create_**: Creates an item in the DynamoDB table with the following schema:
 ```
 {
