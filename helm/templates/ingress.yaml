@@ -1,4 +1,4 @@
-apiVersion: extensions/v1beta1
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: services-ingress
@@ -17,6 +17,10 @@ spec:
       http:
         paths:
           - path: /*
+            pathType: ImplementationSpecific
             backend:
-              serviceName: nginx-service
-              servicePort: 80
+              service:
+                name: nginx-service
+                port: 
+                  number: 80
+                  name: http
